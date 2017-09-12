@@ -1,0 +1,180 @@
+<!HTML>
+ <head>
+ <script>
+
+var num1="";
+var num2="";
+var opers="";
+var cont=0;
+var result;
+var state=false;
+//var c=document.getElementById("box");
+function FunGeneral(ope)
+{
+  result=0;
+  //var num1=parseInt(num1);
+  c=document.getElementById("box");
+  num1=c.value;
+  refrescar();
+  num2=num1;
+  num1="";
+  if(ope!="Raiz"){
+    state=false;
+  }
+  opers=ope;
+  cont=0;
+
+}
+function Restar(a, b) { return a-b;}
+function Sumar(a,b) {return a+b;}
+function Multiplicar(a,b) {return a*b;}
+function Dividir(a,b) {return a/b;}
+function Raiz(a,b) {return  Math.sqrt(b);}
+function Poten(a,b) {return Math.pow(a,b);}
+
+function validar_Num(event){
+  if((event.charCode >= 48 && event.charCode <= 57)){
+        return true;
+      }else{
+           return false;
+      }
+}
+function Ejecutar(operacion)
+{
+  //result=0;
+  state=true;
+  c=document.getElementById("box");
+  num1+=operacion;
+  c.value=num1;
+}
+function Igual()
+{
+  //result=num1;
+  if(state==false){
+    result="Exprecion Incorrecta";
+  }else{
+    //result=num1;
+
+    if(result=="" ){
+      result=opers(parseFloat(num2),parseFloat(num1));
+    }else{
+      result=document.getElementById("box").value;
+    }
+  }
+
+  c=document.getElementById("box");
+  c.value=result;
+  num1="";
+  num2="";
+}
+function Coma(){
+  //alert(cont);
+  num1=document.getElementById("box").value;
+  if(num1!="" && cont==0){
+    num1+=".";
+      cont+=1;
+  }
+  document.getElementById('box').value=num1;
+}
+function refrescar(){
+  document.getElementById("box").value="";
+}
+
+function Calculator() {
+
+}
+function Clear() {
+  cont=0;
+  num1="";
+  num2="";
+  refrescar();
+}
+
+Calculator.prototype.createButtons = function() {
+  var div = document.getElementById("calc");
+  for (var i=0; i<10; i++) {
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("value",i);
+    btn.setAttribute("class","numeros");
+     btn.onclick = function(event) {
+       Ejecutar(this.value);
+
+	};
+	btn.innerHTML = i;
+	div.appendChild(btn);
+  }
+}
+
+function main() {
+  var calc = new Calculator();
+  calc.createButtons();
+}
+ </script>
+ <style media="screen">
+
+ .content-calcu{
+   position: absolute;
+   background-color: rgba(58, 60, 63,1);
+   width: 500px;
+   margin: 0px 350px;
+   padding: 15px 5px;
+   border-radius: 10px;
+ }
+ .content-box{
+   //background-color: rgba(0, 0, 0, 0.6);
+   padding: 15px 0px;
+ }
+ .content-box input{
+    width: 100%;
+    font-family: "arial";
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+    height: 50px;
+    font-size: 30px;
+ }
+ .numeros{
+   font-size: 60px;
+   border: 0px;
+   margin: 2px;
+   width: 80px;
+ }
+ .operadores{
+   font-size: 30px;
+   border: 0px;
+   margin: 2px;
+   width: 60px;
+ }
+ .content-numb{
+   float: left;
+   width: 70%;
+ }
+ .content-opera{
+   float:left;
+   width: 30%;
+ }
+
+ </style>
+ </head>
+ <body onload="main()">
+ <section class="content-calcu">
+   <div class="content-box">
+      <input type="text" id="box" onkeypress='return validar_Num(event);'>
+   </div>
+   <div class="content-numb" id="calc">
+
+   </div>
+   <div class="content-opera">
+     <button type="button" class="operadores" onclick="FunGeneral(Sumar);"id="+">+</button>
+     <button type="button" class="operadores" onclick="FunGeneral(Restar);"id="-">-</button>
+     <button type="button" class="operadores" onclick="FunGeneral(Multiplicar);"id="*">*</button>
+     <button type="button" class="operadores" onclick="FunGeneral(Dividir);"id="/">/</button>
+     <button type="button" class="operadores" onclick="FunGeneral(Raiz);">&#8730;</button>
+     <button type="button" class="operadores" onclick="FunGeneral(Poten);"/>b<sup>a</sup></button>
+     <button type="button" class="operadores" onclick="Clear();">C</button>
+     <button type="button" class="operadores" onclick="Coma();">.</button>
+     <button type="button" class="operadores" onclick="Igual();"id="=">=</button>
+   </div>
+
+ </section>
+ </body>
+</html>
