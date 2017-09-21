@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+/*void burble_sort(int *p,int size_){
+    bool swapp=false;
+    do{
+        swapp=false;
+        for(;i<size_-1;p++){
+            if(*p>*(p+1)){
+                swap_(*p,*(p+1));
+                swapp=true;
+            }
+        }
+    }while(swapp==true);
+}
+void coptle_sort(int *p,int size_){
+    bool swapp=false;
+    do{
+        static int j=1;
+        swapp=false;
+        for(;i<size_-j;p++){
+            if(*p>*(p+1)){
+                swap_(*p,*(p+1));
+                swapp=true;
+            }
+        }
+
+        for(;i>0;p--){
+            if(*p<*p(i-1){
+                swap_(*p,*(p-1));
+                swapp=true;
+            }
+        }
+        j+=1;
+    }while(swapp==true);
+}
+void swap_(int *a ,int *b){
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+}*/
+int main(){
+    int a[10]={5,6,8,7,5,12,3,4,6,878};
+//    burble_sort(a,10);
+    for(int i=0;i<10;i++){
+        cout<<a[i]<<"-"<<endl;
+    }
+    //int b=12;
+    //int *p=&b;
+    //cout<<sizeof(p)<<endl;
+    return 0;
+}
